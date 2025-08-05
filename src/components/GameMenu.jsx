@@ -4,26 +4,26 @@ import { Calculator, Plus, Minus, X, Divide, BookOpen, User, Settings, Newspaper
 
 const GameMenu = ({ onSelectOperation, onGoBack }) => {
   const operations = [
-    { id: 'suma', name: 'Sumar', icon: Plus, color: 'from-green-400 to-green-600' },
-    { id: 'resta', name: 'Restar', icon: Minus, color: 'from-blue-400 to-blue-600' },
-    { id: 'multiplicacion', name: 'Multiplicar', icon: X, color: 'from-purple-400 to-purple-600' },
+    { id: 'suma', name: 'Sumar', icon: Plus, color: 'from-orange-400 to-red-600' },
+    { id: 'resta', name: 'Restar', icon: Minus, color: 'from-orange-400 to-red-600' },
+    { id: 'multiplicacion', name: 'Multiplicar', icon: X, color: 'from-orange-400 to-red-600' },
     { id: 'division', name: 'Dividir', icon: Divide, color: 'from-red-400 to-red-600' }
   ]
 
   const additionalOptions = [
     { id: 'teoria', name: 'Teoría', icon: BookOpen, color: 'from-yellow-400 to-yellow-600' },
-    { id: 'noticias', name: 'Noticias', icon: Newspaper, color: 'from-indigo-400 to-indigo-600' },
-    { id: 'perfil', name: 'Perfil', icon: User, color: 'from-pink-400 to-pink-600' },
-    { id: 'ajustes', name: 'Ajustes', icon: Settings, color: 'from-gray-400 to-gray-600' }
+    { id: 'noticias', name: 'Noticias', icon: Newspaper, color: 'from-red-400 to-yellow-600' },
+    { id: 'perfil', name: 'Perfil', icon: User, color: 'from-red-400 to-yellow-600' },
+    { id: 'ajustes', name: 'Ajustes', icon: Settings, color: 'from-yellow-400 to-yellow-600' }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-orange-400 to-red-500 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0">
-        <div className="absolute top-16 left-16 w-20 h-20 bg-yellow-300 rounded-full opacity-30 animate-pulse"></div>
-        <div className="absolute top-32 right-24 w-16 h-16 bg-pink-300 rounded-full opacity-40 animate-bounce"></div>
-        <div className="absolute bottom-24 left-32 w-24 h-24 bg-blue-300 rounded-full opacity-25 animate-pulse delay-1000"></div>
+        <div className="absolute top-16 left-16 w-20 h-20 bg-yellow-300 rounded-full opacity-30 animate-bounce delay-500"></div>
+        <div className="absolute top-32 right-24 w-16 h-16 bg-pink-300 rounded-full opacity-40 animate-bounce delay-500"></div>
+        <div className="absolute bottom-24 left-32 w-24 h-24 bg-blue-300 rounded-full opacity-25 animate-bounce delay-1000"></div>
         <div className="absolute bottom-16 right-16 w-18 h-18 bg-green-300 rounded-full opacity-35 animate-bounce delay-500"></div>
       </div>
 
@@ -54,21 +54,36 @@ const GameMenu = ({ onSelectOperation, onGoBack }) => {
             Operaciones Matemáticas
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {operations.map((operation, index) => (
-              <motion.div
-                key={operation.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Button
-                  onClick={() => onSelectOperation(operation.id)}
-                  className={`w-full h-32 bg-gradient-to-br ${operation.color} hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl rounded-2xl flex flex-col items-center justify-center text-white font-bold text-lg`}
-                >
-                  <operation.icon size={40} className="mb-2" />
-                  {operation.name}
-                </Button>
-              </motion.div>
+           {operations.map((operation, index) => (
+  <motion.div
+    key={operation.id}
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+  >
+    <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden flex flex-col items-center text-center p-4">
+      {/* Imagen de ejemplo */}
+      <img
+        src={`/Images/${operation.id}.jpeg`} // Asegúrate de tener estas imágenes en tu carpeta pública
+        alt={operation.name}
+        className="w-full h-32 object-cover rounded-xl mb-4"
+      />
+
+      {/* Ícono y nombre */}
+      <operation.icon size={40} className="text-gray-700 mb-2" />
+      <h3 className="text-lg font-bold text-gray-800">{operation.name}</h3>
+
+      {/* Botón dentro de la card */}
+      <Button
+        onClick={() => onSelectOperation(operation.id)}
+        className={`mt-4 bg-gradient-to-r ${operation.color} text-white px-4 py-2 rounded-full hover:scale-105 transition`}
+      >
+        ¡Empezar!
+      </Button>
+    </div>
+  </motion.div>
+
+
             ))}
           </div>
         </div>

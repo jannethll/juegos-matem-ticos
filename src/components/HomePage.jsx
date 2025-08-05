@@ -1,16 +1,22 @@
 import { Button } from '@/components/ui/button.jsx'
 import { motion } from 'framer-motion'
-import mascotImage from '../assets/mascot.png' // Asegúrate de tener una imagen de mascota en esta ruta
+import mascotImage from '../assets/mascot.png'
+import FeatureSlider from './FeatureSlider.jsx'
+import GameFeatureCards from './GameFeatureCards.jsx'
+import HowToPlaySection from './HowToPlaySection.jsx'
+import DevelopersSection from './DevelopersSection.jsx'
+import TestimonialsSection from './TestimonialsSection.jsx'
+import Footer from './Footer.jsx'
 
 const HomePage = ({ onStartGame }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-200 via-orange-200 to-pink-200 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-orange-300 via-orange-300 to-orange-3000 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-400 rounded-full opacity-20 animate-bounce"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-pink-400 rounded-full opacity-20 animate-bounce"></div>
         <div className="absolute top-20 right-20 w-24 h-24 bg-pink-400 rounded-full opacity-30 animate-bounce"></div>
         <div className="absolute bottom-20 right-30 w-40 h-40 bg-red-400 rounded-full opacity-25 animate-bounce delay-1000"></div>
-        <div className="absolute bottom-20 left-20 w-40 h-40 bg-orange-400 rounded-full opacity-25 animate-bounce delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-40 h-40 bg-green-400 rounded-full opacity-25 animate-bounce delay-1000"></div>
         <div className="absolute bottom-10 right-10 w-28 h-28 bg-blue-400 rounded-full opacity-20 animate-pulse delay-500"></div>
       </div>
 
@@ -24,97 +30,181 @@ const HomePage = ({ onStartGame }) => {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
-       <motion.div
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  className="text-center mb-8"
->
-  <h1 className="text-7xl md:text-9xl font-bold mb-6 relative">
-  <motion.span
-    animate={{
-      y: [0, -10, 0],
-    }}
-    transition={{
-      repeat: Infinity,
-      duration: 2,
-      ease: "easeInOut",
-    }}
-    className="inline-block font-[Lobster] text-yellow-500 drop-shadow-[4px_4px_0px_rgba(80,40,0,1)]"
-  >
-    Juegos
-  </motion.span>
-  <br />
-  <motion.span
-    animate={{
-      y: [0, 10, 0],
-    }}
-    transition={{
-      repeat: Infinity,
-      duration: 2,
-      ease: "easeInOut",
-      delay: 1,
-    }}
-    className="inline-block font-[Lobster] text-yellow-500 drop-shadow-[4px_4px_0px_rgba(80,40,0,1)]"
-  >
-    Matematicos
-  </motion.span>
-</h1>
-
-
-          <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            ¡Bienvenido a la jungla del saber! Aquí aprenderás matemáticas de una manera divertida y emocionante.
-            Perfecto para estudiantes de 3º y 4º grado de primaria.
-          </p>
-        </motion.div>
-
-        {/* Mascota central */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-8"
-        >
-          <div className="w-64 h-64 flex items-center justify-center">
-            <img 
-              src={mascotImage} 
-              alt="Mascota búho matemático" 
-              className="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        </motion.div>
-
-        {/* Botón de jugar */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Button
-            onClick={onStartGame}
-            className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
+      <div className="relative z-10">
+        {/* Sección Hero */}
+        <section className="flex flex-col items-center justify-center min-h-screen px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-8"
           >
-            ¡Empezar a Jugar!
-          </Button>
-        </motion.div>
+            <h1 className="text-7xl md:text-9xl font-bold mb-6 relative">
+              <motion.span
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut",
+                }}
+                className="inline-block font-[Lobster] text-yellow-500 drop-shadow-[4px_4px_0px_rgba(80,40,0,1)]"
+              >
+                Juegos
+              </motion.span>
+              <br />
+              <motion.span
+                animate={{
+                  y: [0, 10, 0],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="inline-block font-[Lobster] text-yellow-500 drop-shadow-[4px_4px_0px_rgba(80,40,0,1)]"
+              >
+                Matematicos
+              </motion.span>
+            </h1>
 
-        {/* Descripción adicional */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
-            Explora diferentes operaciones matemáticas, mejora tus habilidades y diviértete aprendiendo.
-          </p>
-        </motion.div>
-        
+            <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+              ¡Bienvenido a la jungla del saber! Aquí aprenderás matemáticas de una manera divertida y emocionante.
+              Perfecto para estudiantes de 3º y 4º grado de primaria.
+            </p>
+          </motion.div>
+
+          {/* Mascota central */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-8"
+          >
+            <div className="w-64 h-64 flex items-center justify-center">
+              <img 
+                src={mascotImage} 
+                alt="Mascota búho matemático" 
+                className="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </motion.div>
+
+          {/* Botón de jugar */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Button
+              onClick={onStartGame}
+              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
+            >
+              ¡Empezar a Jugar!
+            </Button>
+          </motion.div>
+
+          {/* Descripción adicional */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-8 text-center"
+          >
+            <p className="text-lg text-gray-600 max-w-xl mx-auto">
+              Explora diferentes operaciones matemáticas, mejora tus habilidades y diviértete aprendiendo.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Sección de Slider de Características */}
+        <section className="py-20 px-4 bg-gradient-to-r from-orange-400 via-red-200 to-orange-400">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                ¿Por Qué Elegir Nuestro Juego?
+              </h2>
+              <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                Descubre las características que hacen de este juego la mejor herramienta para aprender matemáticas
+              </p>
+            </motion.div>
+            <FeatureSlider />
+          </div>
+        </section>
+
+        {/* Sección de Características del Juego */}
+        <section id="caracteristicas" className="py-20 px-4 bg-gradient-to-r from-orange-200 via-yellow-700 to-orange-300">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Características del Juego
+              </h2>
+              <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                Todo lo que necesitas para una experiencia de aprendizaje completa y divertida
+              </p>
+            </motion.div>
+            <GameFeatureCards />
+          </div>
+        </section>
+
+        {/* Sección Cómo Jugar */}
+        <section id="como-jugar" className="py-20 px-4 bg-gradient-to-r from-pink-600 via-red-500 to-orange-500">
+          <HowToPlaySection />
+        </section>
+
+        {/* Sección de Testimonios */}
+        <section id="testimonios" className="py-20 px-4 bg-gradient-to-r from-orange-500 via-yellow-500 to-yellow-500">
+          <TestimonialsSection />
+        </section>
+
+        {/* Sección de Desarrolladores */}
+        <section className="py-20 px-4 bg-gradient-to-r from-red-400 via-yellow-500 to-yellow-500">
+          <DevelopersSection />
+        </section>
+
+        {/* Call to Action Final */}
+        <section className="py-20 px-4 bg-gradient-to-r from-red-300 via-yellow-600 to-orange-700">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                ¿Listo para la Aventura Matemática?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Únete a miles de estudiantes que ya están mejorando sus habilidades matemáticas de manera divertida
+              </p>
+              <Button
+                onClick={onStartGame}
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white text-xl px-10 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
+              >
+                🚀 ¡Comenzar Ahora!
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <Footer />
       </div>
-      
     </div>
-    
   )
 }
 
